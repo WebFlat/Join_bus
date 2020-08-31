@@ -22,7 +22,7 @@ jQuery(function($){
 		$('.burger').toggleClass('closed');
 	});
 
-
+//change background nav when scroll************************
 	$(window).scroll(function() {
 		if ($(this).scrollTop() >= 600) { 
 			$('.nav').css('background-color', 'rgba(25,25,25, 1)');
