@@ -1,13 +1,13 @@
 @import 'normalize';
 @import 'mixins';
-@font-face {font-family: "Yandex Sans Text Regular"; src: url("//db.onlinewebfonts.com/t/12a6e50c4994fd7f55ce28689647f50e.eot"); src: url("//db.onlinewebfonts.com/t/12a6e50c4994fd7f55ce28689647f50e.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/12a6e50c4994fd7f55ce28689647f50e.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/12a6e50c4994fd7f55ce28689647f50e.woff") format("woff"), url("//db.onlinewebfonts.com/t/12a6e50c4994fd7f55ce28689647f50e.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/12a6e50c4994fd7f55ce28689647f50e.svg#Yandex Sans Text Regular") format("svg"); }
-@font-face {font-family: "Yandex Sans Text Bold"; src: url("//db.onlinewebfonts.com/t/19dce9f9343376727bd8b1f4588e96ce.eot"); src: url("//db.onlinewebfonts.com/t/19dce9f9343376727bd8b1f4588e96ce.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/19dce9f9343376727bd8b1f4588e96ce.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/19dce9f9343376727bd8b1f4588e96ce.woff") format("woff"), url("//db.onlinewebfonts.com/t/19dce9f9343376727bd8b1f4588e96ce.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/19dce9f9343376727bd8b1f4588e96ce.svg#Yandex Sans Text Bold") format("svg"); }
-@font-face {font-family: "Yandex Sans Text"; src: url("//db.onlinewebfonts.com/t/994ad8754720a55fb859ac556f43f585.eot"); src: url("//db.onlinewebfonts.com/t/994ad8754720a55fb859ac556f43f585.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/994ad8754720a55fb859ac556f43f585.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/994ad8754720a55fb859ac556f43f585.woff") format("woff"), url("//db.onlinewebfonts.com/t/994ad8754720a55fb859ac556f43f585.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/994ad8754720a55fb859ac556f43f585.svg#Yandex Sans Text") format("svg"); }
+@import url("../fonts/YandexSansText-Regular/style.css");
+@import url("../fonts/YandexSansText-Medium/style.css");
+@import url("../fonts/YandexSansText-Bold/style.css");
 $descriptions-color: #cdcdcd;
-$red-color: #f90004;
+$red-color: #e42918;
 $primary-color: #303030;
 $title-color: #ffffff;
-$nav-color: rgba(255,255,255, .75);
+$nav-color: rgba(255,255,255, 1);
 $bg-whyMe: #f3f3f3;
 
 * {
@@ -15,7 +15,7 @@ $bg-whyMe: #f3f3f3;
 }
 
 :active, :hover, :focus {
-    outline: 0 !important;
+    outline-color: transparent !important;
     outline-offset: 0!important;
 }
 html {
@@ -23,71 +23,34 @@ html {
 	height: 100%;
 	scroll-behavior: smooth;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
+	html {
+		font-size: 9px;
+	}
+}
+@media screen and (max-width: 420px) {
 	html {
 		font-size: 8px;
 	}
 }
 
 body {
-	font-family: "Yandex Sans Text Regular";
+	font-family: 'Yandex Sans';
 	font-size: 1.6rem;
-	line-height: 1.6;
+	line-height: 1.2;
 	color: $primary-color;
 	min-height: 100%;
-	line-height: 1.2;
+	font-weight: 400;
+	letter-spacing: 1px;
 }
 
 h1,h2,h3,h4,h5,h6 {
-	font-family: "Yandex Sans Text";
-	text-transform: uppercase;
+	font-weight: 500;
+}
+p,span {
+	margin: 0;
 	font-weight: 400;
 }
-p {
-	margin: 0;
-}
-
-
-//Helpers*******************************************
-.wrapper {
-	max-width: 1170px;
-	width: 80%;
-	margin: 0 auto;
-	text-align: center;
-	&--nav {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		position: relative;
-	}
-	&--footer {
-		padding: 70px 0 10px 0;
-
-	}
-}
-@media screen and (max-width: 1160px) {
-	.wrapper {
-		width: 90%;
-		&--footer {
-			padding-top: 30px;
-		}
-	}
-
-}
-.showMenu {
-	display: flex !important;
-}
-.hover {
-	color: $title-color !important;
-}
-.showText {
-	height: 100% !important;
-	display: block !important;
-}
-.open {
-	transform: translateX(0)!important;
-}
-
 
 
 //Helpers*******************************************
@@ -138,7 +101,7 @@ p {
 
 //Header section********************************************
 .nav {
-	background-color: rgba(25,25,25, .73);
+	background-color: rgba(25,25,25, .75);
 	color: $title-color;
 	position: fixed;
 	top: 0;
@@ -149,10 +112,9 @@ p {
 	justify-items: center;
 	z-index: 999;
 	&__logo {
-		width: 70px;
+		width: 79px;
 	}
 	&__links {
-		font-weight: normal;
 		text-transform: uppercase;
 		display: flex;
 	}
@@ -194,7 +156,7 @@ p {
 		border-radius: 15px;
 		z-index: 100;
 		transition: all .23s ease-in;
-		&::before {
+		box-shadow: 1px 1px 18px 0px rgba(50, 50, 50, 0.93);		&::before {
 			content: "";
   			position: absolute;
   			top: -22px;
@@ -226,6 +188,11 @@ p {
 	&__reg {
 		position: relative;
 		display: flex;
+	}
+}
+@media screen and (max-width: 768px) {
+	.nav__logo {
+		width: 70px;
 	}
 }
 
@@ -279,12 +246,11 @@ p {
 	top: 49px;	
 	z-index: 100000;
 	min-width: 200px;
-	width: 28%;
+	width: 25%;
 	height: 100vh;
 	&__links {
         width: 100%;
         text-align: left;
-		font-weight: 800;
 		li {
 		  margin: 10px 0;
 		  list-style: none;
@@ -322,7 +288,7 @@ p {
 	}
 	&__submenu-links {
 		display: none;
-		padding-top: 10px;
+		padding: 10px 0 0 15px;
 	}
 }
 .burger-wrap__submenu.active {
@@ -365,7 +331,7 @@ p {
 
 //About section******************************
 .about {
-	padding: 100px 10px 130px 10px; 
+	padding: 100px 10px 100px 10px; 
 	line-height: 22px;	
 	&__discription {
 		padding: 0 115px;
@@ -400,7 +366,6 @@ p {
 		opacity: .9;
 	}
 	&__title {
-		font-family: "Yandex Sans Text";
 		text-transform: uppercase;
 		font-size: 3.6rem;
 	}
@@ -441,13 +406,15 @@ p {
 //advantage section******************************
 
 .advantage {
-	padding-bottom: 35px;
+	letter-spacing: 0;
 	&__title,
 	&__subtitle {
 		font-size: 3.6rem;
+		text-transform: uppercase;
+		margin: 0 0 15px 0;
 	}
 	&__title {	
-		margin: 0 0 155px 0;
+		margin: 0 0 150px 0;
 	}
 	&__content {
 		text-align: left;
@@ -459,7 +426,7 @@ p {
 	}
 	&__wrap-img {
 		min-width: 25%;
-		padding: 70px 0 0 60px;
+		padding: 30px 0 0 90px;
 		position: relative;
 	}
 	&__img {
@@ -468,22 +435,39 @@ p {
 		z-index: 2;
 	}
 	&__number {
+		font-weight: 700;	
 		position: absolute;
-		left: -30px;
-		top: -10px;
+		left: 0;
+		top: -55px;
 		font-size: 12.4rem;
-		font-family: "Yandex Sans Text Bold";
 		opacity: .2;
 	}
 	&__lists,
 	&__text {
 		opacity: .9;
 		font-size: 1.8rem;
+		line-height: 1.23;
 	}
 	&__lists {
-		padding: 0  5px 0 20px;
+		padding: 0  5px 0 0;
+		margin: 0 0 15px 0;
+		list-style: none;
+		position: relative;
+		li::before {
+			content: "\2022"; 
+  			color: $red-color; 
+  			font-weight: bold; 
+  			display: inline-block; 
+			position: absolute;
+			left: 0;
+		}  
 	}
-
+	&__text {
+		margin-bottom: 85px;
+	}
+	&__list-text {
+		text-indent: 10px;
+	}		
 }
 @media screen and (max-width:1024px) {
 	.advantage {
@@ -514,6 +498,11 @@ p {
 		&__wrap-img {
 			display: flex;
 			justify-content:center;
+			padding-top: 0;
+		}
+		&__number {
+			left: -75%;
+			top: 0;
 		}
 	}	
 }
@@ -528,6 +517,14 @@ p {
 	&__items {
 		width: 100%;
 		padding: 50px 0 85px 0;
+	}
+	&__title {
+		font-size: 3.6rem;
+		text-transform: uppercase;
+		margin: 0 0 10px 0;
+	}
+	&__subtitle {
+		font-size: 1.8rem;
 	}
 	&__item {
 		display: flex;
@@ -575,7 +572,7 @@ p {
 		padding: 0 40px 0 0;	
 	}
 	&__text {
-		padding: 0 12%;
+		padding: 0 5%;
 		font-size: 1.8rem;
 	}
 }
@@ -648,13 +645,15 @@ p {
 		justify-content: flex-end;
 	}
 	&__title {
-		font-size: 3.35rem;
+		font-size: 3.357rem;
 		letter-spacing: 3px;
+		text-transform: uppercase;
+		line-height: 1.1;
 	}
 	&__content {
 		text-align: right;
-		width: 50%;
-		padding: 12% 0 13% 0;
+		width: 51%;
+		padding: 10% 0 10% 0;
 		&:before {
 			content: '';
 			display: block;
@@ -666,24 +665,28 @@ p {
 			z-index: -1;
 			top: -30px;
 			bottom: -55px;
-			right: -42%;
+			right: -40%;
 		}
 	}
 	&__text {
 		margin-top: 30px;
 		letter-spacing: 1px;
-		line-height:1.4;	
+		line-height:1.4;
+		opacity: .8;	
 		&:first-of-type {
-			margin-top: 15%;
+			margin-top: 16%;
 		}	
 	}
 }
 @media screen and (max-width:1024px) {
 	.rent {
 
-		&__content:before {
+		&__content {
+			padding-top: 15%;
+			&::before {
 			height: 100%;
 			right: -35%;
+			}
 		}
 		&__title {
 			font-size: 3rem;
@@ -702,7 +705,7 @@ p {
 	.rent {
 		margin-bottom: -20%;
 		&__content {
-			padding: 27% 0 13% 0;
+			padding: 20% 0 13% 0;
 		}
 	}
 }
@@ -729,9 +732,10 @@ p {
 
 //service section******************************
 .service {
-	padding: 100px 0 140px 0;
+	padding: 70px 0 140px 0;
 	&__title {
 		font-size: 3.6rem;
+		text-transform: uppercase;
 	}
 	&__items {
 		display: flex;
@@ -748,7 +752,7 @@ p {
 		}
 	}
 	&__number {
-		font-family: "Yandex Sans Text Bold";
+		font-weight: 700;	
 		opacity: .12;
 		position: absolute;
 		font-size: 6.4rem;
@@ -773,6 +777,7 @@ p {
 		}
 		&__item {
 			display: flex;
+			letter-spacing: 0;
 		}
 		&__item:not(:first-of-type) {
 			margin-top: 10px;
@@ -799,14 +804,6 @@ p {
 	background-size: cover;
 	position: relative;
 	color: $title-color;
-	// &__bg {
-	// 	position: absolute;
-	// 	left: 0;
-	// 	right: 0;
-	// 	top: 0;
-	// 	bottom: 0;
-	// 	z-index: -1;
-	// }
 	&__info {
 		display: flex;
 		justify-content: space-around;
@@ -814,7 +811,7 @@ p {
 		margin-bottom: 60px;
 	}
 	&__info-wrap {
-		width: 33%;
+		width: 32%;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -825,8 +822,7 @@ p {
 		color: $title-color;
 		text-decoration: none;
 		opacity: .9;
-		letter-spacing: 1px;
-		font-weight: 300;
+		font-weight: 400;
 	}
 	&__link {
 		margin-top: 13px;
@@ -841,8 +837,8 @@ p {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		width: 30px;
-		height: 30px;
+		width: 35px;
+		height: 35px;
 		border: 2px solid $red-color;
 		border-radius: 50%;	
 	}
